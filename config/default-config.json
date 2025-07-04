@@ -1,0 +1,10 @@
+{
+  "database": {
+    "driver": "mysql",
+    "host": "localhost:3309",
+    "username": "root",
+    "password": "1997",
+    "schema": "flightDb"
+}
+
+}
