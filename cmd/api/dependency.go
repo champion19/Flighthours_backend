@@ -1,15 +1,13 @@
 package api
-import(
- "github.com/champion19/Flighthours_backend/config"
-domain  "github.com/champion19/Flighthours_backend/internal/domain/employee"
-repo  "github.com/champion19/Flighthours_backend/internal/platform/employee"
+
+import (
+	 "github.com/champion19/Flighthours_backend/config"
+	repo "github.com/champion19/Flighthours_backend/internal/platform/employee"
+	domain"github.com/champion19/Flighthours_backend/internal/domain/employee"
 )
 
-// ...
-
 type Dependencies struct {
-	employeeRepo domain.Repository
-  config       *config.Config
+	employee domain.Repository
 }
 
 func initDependencies() *Dependencies {
@@ -18,10 +16,9 @@ func initDependencies() *Dependencies {
 	if err != nil {
 		panic("error get db")
 	}
-	employeeRepo := repo.NewRepository(db)
+	employeerRepo := repo.NewRepository(db)
 
 	return &Dependencies{
-		employeeRepo: employeeRepo,
-		config:       &cfg,
+		employee: employeerRepo,
 	}
 }

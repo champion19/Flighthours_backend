@@ -9,10 +9,10 @@ import (
 func FindModuleRoot() (string, error) {
 	dir, err := os.Getwd()
 	if err != nil {
-		return "", fmt.Errorf("cannot determine current directory: %w", err)
+		return "", fmt.Errorf("cannot determine current directory: %s", err.Error())
 	}
 
-	dir =filepath.Clean(dir)
+	dir = filepath.Clean(dir)
 	for {
 		if fi, err := os.Stat(filepath.Join(dir, "go.mod")); err == nil && !fi.IsDir() {
 			return dir, nil

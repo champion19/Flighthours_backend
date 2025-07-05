@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/golangci/golangci-lint
+    rev: v2.2.1  # Usa la versión que prefieras
+    hooks:
+      - id: golangci-lint
+        name: golangci-lint
+        entry: golangci-lint run
+        language: system
+        types: [go]
