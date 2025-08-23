@@ -5,6 +5,19 @@
     "username": "root",
     "password": "1997",
     "schema": "flightDb"
-}
-
+  },
+  "jwt": {
+    "secretKey": "secret",
+    "expirationTime": "1h"
+  },
+  "api": {
+    "baseURL": "http://localhost:8081"
+  },
+  "verificationToken": {
+    "expirationTime": "2m"
+  },
+  "resend": {
+    "apiKey": "re_6w3aQQUe_EQaL4h4X3QpUizqcxbG725a8",
+    "fromEmail": "flighthours@rbsuport.com"
+  }
 }
