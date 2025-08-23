@@ -16,9 +16,9 @@ type Employee struct {
 	Emailconfirmed       bool
 	IdentificationNumber string
 	Bp                   string
-  StartDate           time.Time
-	EndDate             time.Time
-	Active              bool
+	StartDate            time.Time
+	EndDate              time.Time
+	Active               bool
 }
 
 func (e *Employee) setID() {
@@ -35,8 +35,8 @@ func (e *Employee) hashPassword() error {
 }
 
 type Airline struct {
-	ID   string
-	Name string
-	Code string
+	ID     string
+	Name   string
+	Code   string
 	Status string
 }
