@@ -96,12 +96,18 @@ func (h handler) Save() func(c *gin.Context) {
 			return
 		}
 
-		employee, err := h.service.Save(employeeRequest.ToDomain())
+		domainEmployee, err := employeeRequest.ToDomain()
 		if err != nil {
-			h.HandleError(c, err)
-			return
+				h.HandleError(c, err)
+				return
 		}
 
+		employee, err := h.service.Save(domainEmployee)
+		if err != nil {
+				h.HandleError(c, err)
+				return
+		}
+		
 		response := EmployeeResponse{
 			ID:                   employee.ID,
 			Name:                 employee.Name,

@@ -1,6 +1,8 @@
 package employee
 
 import (
+	"time"
+
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -14,8 +16,8 @@ type Employee struct {
 	Emailconfirmed       bool
 	IdentificationNumber string
 	Bp                   string
-  StartDate          string
-	EndDate            string
+  StartDate           time.Time
+	EndDate             time.Time
 	Active              bool
 }
 
