@@ -25,7 +25,7 @@ func (r *repository) GetEmployeeByEmail(email string) (*domain.Employee, error) 
 	if err != nil {
 		return nil, domain.ErrGettingEmployeeByEmail
 	}
-	defer func () {
+	defer func() {
 		if err := stmt.Close(); err != nil {
 			log.Printf("failed to close statement: %v", err)
 		}
@@ -49,7 +49,7 @@ func (r *repository) GetEmployeeByID(id string) (*domain.Employee, error) {
 	if err != nil {
 		return nil, domain.ErrGetEmployee
 	}
-	defer func () {
+	defer func() {
 		if err := stmt.Close(); err != nil {
 			log.Printf("failed to close statement: %v", err)
 		}
@@ -169,10 +169,10 @@ func (r *repository) GetAllAirlines() ([]domain.Airline, error) {
 		return nil, domain.ErrAirlineCannotFound
 	}
 	defer func() {
-    if cerr := stmt.Close(); cerr != nil {
-        log.Printf("Error al cerrar statement de aerolíneas: %v", cerr)
-    }
-}()
+		if cerr := stmt.Close(); cerr != nil {
+			log.Printf("Error al cerrar statement de aerolíneas: %v", cerr)
+		}
+	}()
 
 	rows, err := stmt.Query()
 	if err != nil {
