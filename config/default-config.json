@@ -4,20 +4,20 @@
     "host": "localhost:3309",
     "username": "root",
     "password": "1997",
-    "schema": "flightDb"
+    "schema": "flight_db"
   },
   "jwt": {
-    "secretKey": "secret",
-    "expirationTime": "1h"
+    "secret_key": "secret",
+    "expiration_time": "1h"
   },
   "api": {
-    "baseURL": "http://localhost:8081"
+    "base_url": "http://localhost:8081"
   },
-  "verificationToken": {
-    "expirationTime": "2m"
+  "verification_token": {
+    "expiration_time": "15m"
   },
   "resend": {
-    "apiKey": "re_6w3aQQUe_EQaL4h4X3QpUizqcxbG725a8",
-    "fromEmail": "flighthours@rbsuport.com"
+    "api_key": "re_6w3aQQUe_EQaL4h4X3QpUizqcxbG725a8",
+    "from_email": "flighthours@rbsuport.com"
   }
 }

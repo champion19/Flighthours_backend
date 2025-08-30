@@ -14,7 +14,7 @@ type Config struct {
 	Database          Database          `json:"database"`
 	JWT               JWTConfig         `json:"jwt"`
 	API               APIConfig         `json:"api"`
-	VerificationToken VerificationToken `json:"verificationToken"`
+	VerificationToken VerificationToken `json:"verification_token"`
 	Resend            ResendConfig      `json:"resend"`
 }
 
@@ -27,16 +27,16 @@ type Database struct {
 }
 
 type APIConfig struct {
-	BaseURL string `json:"baseURL"`
+	BaseURL string `json:"base_url"`
 }
 
 type VerificationToken struct {
-	ExpirationTime time.Duration `json:"expirationTime"`
+	ExpirationTime time.Duration `json:"expiration_time"`
 }
 
 type ResendConfig struct {
-	APIKey    string `json:"apiKey"`
-	FromEmail string `json:"fromEmail"`
+	APIKey    string `json:"api_key"`
+	FromEmail string `json:"from_email"`
 }
 
 func Load() Config {
@@ -56,8 +56,8 @@ func Load() Config {
 		JWT               JWTConfigRaw `json:"jwt"`
 		API               APIConfig    `json:"api"`
 		VerificationToken struct {
-			ExpirationTime string `json:"expirationTime"`
-		} `json:"verificationToken"`
+			ExpirationTime string `json:"expiration_time"`
+		} `json:"verification_token"`
 		Resend ResendConfig `json:"resend"`
 	}
 
@@ -92,11 +92,11 @@ func Load() Config {
 }
 
 type JWTConfig struct {
-	SecretKey      string        `json:"secretKey"`
-	ExpirationTime time.Duration `json:"expirationTime"`
+	SecretKey      string        `json:"secret_key"`
+	ExpirationTime time.Duration `json:"expiration_time"`
 }
 
 type JWTConfigRaw struct {
-	SecretKey      string `json:"secretKey"`
-	ExpirationTime string `json:"expirationTime"`
+	SecretKey      string `json:"secret_key"`
+	ExpirationTime string `json:"expiration_time"`
 }
