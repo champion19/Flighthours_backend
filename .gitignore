@@ -91,3 +91,4 @@ config/default-config.json
 # Local development
 local/
 default-config.json
+config/default-config.json
