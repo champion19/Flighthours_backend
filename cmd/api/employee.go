@@ -37,31 +37,30 @@ type LoginRequest struct {
 }
 
 type EmployeeResponse struct {
-	ID                   string `json:"id"`
-	Name                 string `json:"name"`
-	Airline              string `json:"airline"`
-	Email                string `json:"email"`
-	Emailconfirmed       bool   `json:"emailconfirmed"`
-	IdentificationNumber string `json:"identification_number"`
-	Bp                   string `json:"bp"`
+	ID                   string    `json:"id"`
+	Name                 string    `json:"name"`
+	Airline              string    `json:"airline,omitempty"`
+	Email                string    `json:"email"`
+	Emailconfirmed       bool      `json:"emailconfirmed"`
+	IdentificationNumber string    `json:"identification_number"`
+	Bp                   string    `json:"bp,omitempty"`
 	StartDate            time.Time `json:"start_date"`
 	EndDate              time.Time `json:"end_date"`
-	Active               bool   `json:"active"`
-
+	Active               bool      `json:"active"`
 }
 
 type LoginResponse struct {
-	ID                   string `json:"id"`
-	Name                 string `json:"name"`
-	Airline              string `json:"airline"`
-	Email                string `json:"email"`
-	Emailconfirmed       bool   `json:"emailconfirmed"`
-	IdentificationNumber string `json:"identification_number"`
-	Bp                   string `json:"bp"`
+	ID                   string    `json:"id"`
+	Name                 string    `json:"name"`
+	Airline              string    `json:"airline,omitempty"`
+	Email                string    `json:"email"`
+	Emailconfirmed       bool      `json:"emailconfirmed"`
+	IdentificationNumber string    `json:"identification_number"`
+	Bp                   string    `json:"bp,omitempty"`
 	StartDate            time.Time `json:"start_date"`
 	EndDate              time.Time `json:"end_date"`
-	Active               bool   `json:"active"`
-	Token                string `json:"token"`
+	Active               bool      `json:"active"`
+	Token                string    `json:"token"`
 }
 type ResponseEmail struct {
 	Title   string
@@ -89,39 +88,35 @@ func (e LoginRequest) Validate() error {
 	return validate.Struct(e)
 }
 
-
-
-
 func (e EmployeeRequest) ToDomain() (domain.Employee, error) {
 	layout := "2006-01-02T15:04:05.000000"
 
 	startDate, err := time.Parse(layout, e.StartDate)
 	if err != nil {
-			return domain.Employee{}, err
+		return domain.Employee{}, err
 	}
 
 	var endDate time.Time
 	if e.EndDate != "" {
-			endDate, err = time.Parse(layout, e.EndDate)
-			if err != nil {
-					return domain.Employee{}, err
-			}
+		endDate, err = time.Parse(layout, e.EndDate)
+		if err != nil {
+			return domain.Employee{}, err
+		}
 	}
 
 	return domain.Employee{
-			Name:                 e.Name,
-			Airline:              e.Airline,
-			Email:                e.Email,
-			Password:             e.Password,
-			Emailconfirmed:       e.Emailconfirmed,
-			IdentificationNumber: e.IdentificationNumber,
-			Bp:                   e.Bp,
-			StartDate:            startDate,
-			EndDate:              endDate,
-			Active:               e.Active,
+		Name:                 e.Name,
+		Airline:              e.Airline,
+		Email:                e.Email,
+		Password:             e.Password,
+		Emailconfirmed:       e.Emailconfirmed,
+		IdentificationNumber: e.IdentificationNumber,
+		Bp:                   e.Bp,
+		StartDate:            startDate,
+		EndDate:              endDate,
+		Active:               e.Active,
 	}, nil
 }
-
 
 func (e LoginRequest) ToDomain() domain.Employee {
 	return domain.Employee{

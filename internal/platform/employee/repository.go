@@ -170,18 +170,18 @@ func (r *repository) GetAllAirlines() ([]domain.Airline, error) {
 	}
 	defer func() {
 		if cerr := stmt.Close(); cerr != nil {
-			log.Printf("Error al cerrar statement de aerolíneas: %v", cerr)
+			log.Printf("Error at closing statement: %v", cerr)
 		}
 	}()
 
 	rows, err := stmt.Query()
 	if err != nil {
-		log.Printf("Error al ejecutar la consulta de aerolíneas: %v", err)
+		log.Printf("Error at executing the query of airlines: %v", err)
 		return nil, domain.ErrAirlineCannotFound
 	}
 	defer func() {
 		if cerr := rows.Close(); cerr != nil {
-			log.Printf("Error al cerrar filas de aerolíneas: %v", cerr)
+			log.Printf("Error at closing the rows of airlines: %v", cerr)
 		}
 	}()
 
@@ -190,7 +190,7 @@ func (r *repository) GetAllAirlines() ([]domain.Airline, error) {
 	for rows.Next() {
 		var airline domain.Airline
 		if err := rows.Scan(&airline.ID, &airline.Name, &airline.Code); err != nil {
-			log.Printf("Error al escanear fila de aerolínea: %v", err)
+			log.Printf("Error at scanning airline row: %v", err)
 			return nil, domain.ErrAirlineCannotFound
 		}
 		log.Printf("Aerolínea encontrada: ID=%s, Name=%s, Code=%s", airline.ID, airline.Name, airline.Code)
@@ -198,10 +198,10 @@ func (r *repository) GetAllAirlines() ([]domain.Airline, error) {
 	}
 
 	if err := rows.Err(); err != nil {
-		log.Printf("Error al iterar sobre las filas: %v", err)
+		log.Printf("Error at iterating over rows: %v", err)
 		return nil, domain.ErrAirlineCannotFound
 	}
 
-	log.Printf("Total de aerolíneas encontradas: %d", len(airlines))
+	log.Printf("Total of airlines found: %d", len(airlines))
 	return airlines, nil
 }
