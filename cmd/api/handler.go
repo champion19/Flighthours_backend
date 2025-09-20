@@ -98,16 +98,16 @@ func (h handler) Save() func(c *gin.Context) {
 
 		domainEmployee, err := employeeRequest.ToDomain()
 		if err != nil {
-				h.HandleError(c, err)
-				return
+			h.HandleError(c, err)
+			return
 		}
 
 		employee, err := h.service.Save(domainEmployee)
 		if err != nil {
-				h.HandleError(c, err)
-				return
+			h.HandleError(c, err)
+			return
 		}
-		
+
 		response := EmployeeResponse{
 			ID:                   employee.ID,
 			Name:                 employee.Name,
@@ -157,19 +157,18 @@ func (h handler) EmailStatus() func(c *gin.Context) {
 			h.HandleError(c, domain.ErrEmailNotVerified)
 			return
 		}
-	  employee,err:= h.service.GetEmployeeByEmail(email)
-		if err !=nil{
+		employee, err := h.service.GetEmployeeByEmail(email)
+		if err != nil {
 			h.HandleError(c, err)
 			return
 		}
-		response:= EmployeeEmailConfirmedResponse{
-			Emailconfirmed:employee.Emailconfirmed,
+		response := EmployeeEmailConfirmedResponse{
+			Emailconfirmed: employee.Emailconfirmed,
 		}
 		c.JSON(http.StatusOK, response)
-		}
+	}
 
 }
-
 
 func (h handler) HandlerErrorVerification(c *gin.Context, err error) {
 	switch err {
