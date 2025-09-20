@@ -81,10 +81,10 @@ func (r *resendNotifier) SendVerificationEmail(email, verificationLink string) e
 		return fmt.Errorf("failed to send email: %w", err)
 	}
 	defer func() {
-    if cerr := resp.Body.Close(); cerr != nil {
-        log.Printf("failed to close response body: %v", cerr)
-    }
-}()
+		if cerr := resp.Body.Close(); cerr != nil {
+			log.Printf("failed to close response body: %v", cerr)
+		}
+	}()
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("resend API returned status: %d", resp.StatusCode)

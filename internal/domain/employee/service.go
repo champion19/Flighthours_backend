@@ -138,12 +138,6 @@ func (s service) Login(employee Employee) (*Employee, string, error) {
 	return employeeFound, token, nil
 }
 
-
 func (s *service) GetAllAirlines() ([]Airline, error) {
 	return s.repository.GetAllAirlines()
 }
-
-
-
-
-

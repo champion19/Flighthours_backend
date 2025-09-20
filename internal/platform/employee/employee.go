@@ -7,17 +7,17 @@ import (
 )
 
 type Employee struct {
-	ID                   string `json:"id"`
-	Name                 string `json:"name"`
-	Airline              string `json:"airline"`
-	Email                string `json:"email"`
-	Password             string `json:"password"`
-	Emailconfirmed       bool   `json:"emailconfirmed"`
+	ID                   string    `json:"id"`
+	Name                 string    `json:"name"`
+	Airline              string    `json:"airline"`
+	Email                string    `json:"email"`
+	Password             string    `json:"password"`
+	Emailconfirmed       bool      `json:"emailconfirmed"`
 	IdentificationNumber string    `json:"identification_number"`
 	Bp                   string    `json:"bp"`
-	StartDate           time.Time `json:"start_date"`
-	EndDate             time.Time `json:"end_date"`
-	Active              bool   `json:"active"`
+	StartDate            time.Time `json:"start_date"`
+	EndDate              time.Time `json:"end_date"`
+	Active               bool      `json:"active"`
 }
 
 func (e Employee) ToDomain() domain.Employee {
@@ -30,25 +30,24 @@ func (e Employee) ToDomain() domain.Employee {
 		Emailconfirmed:       e.Emailconfirmed,
 		IdentificationNumber: e.IdentificationNumber,
 		Bp:                   e.Bp,
-	  StartDate:						e.StartDate,
-		EndDate:             e.EndDate,
-		Active:              e.Active,
+		StartDate:            e.StartDate,
+		EndDate:              e.EndDate,
+		Active:               e.Active,
 	}
 }
 
 type Airline struct {
-	ID   string
-	Name string
-	Code string
+	ID     string
+	Name   string
+	Code   string
 	Status string
 }
 
 func (a Airline) ToDomain() domain.Airline {
 	return domain.Airline{
-		ID:                   a.ID,
-		Name:                 a.Name,
-		Code:                 a.Code,
-		Status:               a.Status,
-
+		ID:     a.ID,
+		Name:   a.Name,
+		Code:   a.Code,
+		Status: a.Status,
 	}
 }
