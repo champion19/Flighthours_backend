@@ -4,7 +4,7 @@
     "host": "localhost:3309",
     "username": "root",
     "password": "1997",
-    "schema": "flight_db"
+    "schema": "flightDb"
   },
   "jwt": {
     "secret_key": "secret",
